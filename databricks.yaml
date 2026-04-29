@@ -2,7 +2,7 @@ bundle:
   name: simple-bundle
 
 workspace:
-  root_path: ~/.dab-clean-${bundle.name}/${bundle.target}
+  root_path: ~/dab-clean-${bundle.name}/${bundle.target}
 
 targets:
   dev:

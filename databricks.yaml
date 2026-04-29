@@ -6,6 +6,9 @@ workspace:
 
 targets:
   dev:
+    permissions:
+      - level: CAN_MANAGE
+        user_name: arjunss057@gmail.com
 
 resources:
   jobs:

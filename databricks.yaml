@@ -3,8 +3,6 @@ bundle:
 
 targets:
   dev:
-    workspace:
-      host: ${env.DATABRICKS_HOST}
 
 resources:
   jobs:
@@ -13,7 +11,7 @@ resources:
       tasks:
         - task_key: run-notebook
           notebook_task:
-            notenook_path: ./test_notebook_git.ipynb
+            notebook_path: ./test_notebook_git.ipynb
           new_cluster:
             spark_version: 13.3.x-scala2.12
             node_type_id: Standard_DS3_v2

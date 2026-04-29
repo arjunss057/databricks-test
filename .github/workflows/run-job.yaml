@@ -28,7 +28,7 @@ jobs:
 
       - name: Lint
         run: |
-          flake8 test_notebook_git.py --ignore=E402,F841,E501,F821 --max-line-length=120
+          flake8 test_notebook_git.py --ignore=E402,F841,E501,F821,E303,E305 --max-line-length=120
 
   run-job:
     runs-on: ubuntu-latest

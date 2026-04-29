@@ -1,0 +1,33 @@
+name: Simple Databricks CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      DATABRICKS_HOST: ${{secrets.DATABRICKS_HOST}}
+      DATABRICKS_TOKEN: ${{secrets.DATABRICKS_TOKEN}}
+  
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+  
+      - name: Install Databricks CLI
+        run: pip install databricks-cli
+
+      - name: Configure Databricks CLI
+        run: |
+          databricks configure \ 
+            --host "$DATABRICKS_HOST" \
+            --token "$DATABRICKS_TOKEN"
+
+      - name: Deploy bundle
+        run: databricks bundle deploy --target dev
+
+      - name: Run job
+        run: databricks bundle run simple-job --target dev
+        

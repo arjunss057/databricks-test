@@ -7,14 +7,39 @@ on:
   workflow_dispatch:
 
 jobs:
+  syntax-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          pip install nbconvert flake8
+
+      - name: Convert notebook
+        run: |
+          jupyter nbconvert --to python test_notebook_git.ipynb
+
+      - name: Syntax check
+        run: |
+          python -m py_compile test_notebook_git.py
+
+      - name: Lint
+        run: |
+          flake8 test_notebook_git.py
+
   run-job:
     runs-on: ubuntu-latest
+    needs: syntax-check
 
     env:
       DATABRICKS_HOST: ${{secrets.DATABRICKS_HOST}}
       DATABRICKS_TOKEN: ${{secrets.DATABRICKS_TOKEN}}
 
-    steps:
+    steps:   
+    
       - name: Install Databricks CLI
         run: |
           curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh

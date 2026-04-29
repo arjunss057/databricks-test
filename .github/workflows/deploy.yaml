@@ -19,12 +19,6 @@ jobs:
       - name: Install Databricks CLI
         run: pip install databricks-cli
 
-      - name: Configure Databricks CLI
-        run: |
-          databricks configure \ 
-            --host "$DATABRICKS_HOST" \
-            --token "$DATABRICKS_TOKEN"
-
       - name: Deploy bundle
         run: databricks bundle deploy --target dev
 

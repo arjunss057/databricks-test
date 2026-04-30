@@ -18,8 +18,9 @@ resources:
         - task_key: run-notebook
           notebook_task:
             notebook_path: ./test_notebook_git.ipynb
-          new_cluster:
-            spark_version: 13.3.x-scala2.12
-            node_type_id: Standard_DS3_v2
-            num_workers: 1
+          environment_key: default
+environments:
+  - environment_key: default
+    spec:
+      environment_version: "2"
             

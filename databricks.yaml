@@ -4,6 +4,9 @@ bundle:
 targets:
   dev:
     mode: development
+    permissions:
+      - user_name: arjunss057@gmail.com
+        level: CAN_RUN
 
 workspace:
   root_path: ~/dab-demo/${bundle.name}/${bundle.target}

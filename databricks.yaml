@@ -19,8 +19,9 @@ resources:
           notebook_task:
             notebook_path: ./test_notebook_git.ipynb
           environment_key: default
+
 environments:
-  - environment_key: default
+  default:
     spec:
       environment_version: "2"
             
